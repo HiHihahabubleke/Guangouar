@@ -17,7 +17,7 @@ This repository contains a simple quiz page and a small Node.js backend used to 
 
 ## Deploying
 
-- The frontend (`index_with_finish_button.html`) can be deployed to GitHub Pages.
+- The frontend (`index.html`) can be deployed to GitHub Pages.
 - Host the backend (server.js) on any Node.js hosting platform (Render, Heroku, etc.).
-- In `index_with_finish_button.html` set `BACKEND_URL` to the URL where the backend is deployed so that the page can fetch question files.
+- In `index.html` set `BACKEND_URL` to the URL where the backend is deployed so that the page can fetch question files.
 
