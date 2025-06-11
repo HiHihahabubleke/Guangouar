@@ -55,10 +55,13 @@
             }
         }
 
+        const BACKEND_URL = ""; // Замените на адрес своего сервера при развертывании
+
         // Загрузка вопросов с сервера
         async function loadQuestions() {
             const file = TEST_FILES[currentTestFileIndex];
-            const response = await fetch(`/questions?file=${encodeURIComponent(file)}`);
+            const url = `${BACKEND_URL}/questions?file=${encodeURIComponent(file)}`;
+            const response = await fetch(url);
             QUESTIONS = await response.json();
             QUESTIONS.forEach(q => shuffle(q.options)); // Перемешиваем варианты перед началом
             showQuestion();
