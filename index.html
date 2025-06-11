@@ -44,7 +44,8 @@
         let QUESTIONS = [];
         let currentQuestionIndex = 0;
         let score = 0;
-        const TEST_FILES = ["PM04.json", "PM03.json"];
+        // Файлы с вопросами (относительные пути)
+        const TEST_FILES = ["./PM04.json", "./PM03.json"];
         let currentTestFileIndex = 0;
 
         // Функция для перемешивания массива
@@ -55,16 +56,23 @@
             }
         }
 
-        const BACKEND_URL = ""; // Замените на адрес своего сервера при развертывании
+        const BACKEND_URL = ""; // При использовании GitHub Pages оставьте пустым
 
-        // Загрузка вопросов с сервера
+        // Загрузка вопросов
         async function loadQuestions() {
             const file = TEST_FILES[currentTestFileIndex];
-            const url = `${BACKEND_URL}/questions?file=${encodeURIComponent(file)}`;
-            const response = await fetch(url);
-            QUESTIONS = await response.json();
-            QUESTIONS.forEach(q => shuffle(q.options)); // Перемешиваем варианты перед началом
-            showQuestion();
+            const url = BACKEND_URL
+                ? `${BACKEND_URL}/questions?file=${encodeURIComponent(file)}`
+                : file; // загружаем локальный файл при пустом BACKEND_URL
+
+            try {
+                const response = await fetch(url);
+                QUESTIONS = await response.json();
+                QUESTIONS.forEach(q => shuffle(q.options)); // Перемешиваем варианты перед началом
+                showQuestion();
+            } catch (err) {
+                console.error('Не удалось загрузить вопросы:', err);
+            }
         }
 
         // Показ текущего вопроса
