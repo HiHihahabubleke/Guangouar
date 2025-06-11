@@ -4,7 +4,7 @@ const fs = require('fs');
 
 const app = express();
 
-// Serve static files like index_with_finish_button.html
+// Serve static files like index.html
 app.use(express.static(__dirname));
 
 // Endpoint to return questions JSON
