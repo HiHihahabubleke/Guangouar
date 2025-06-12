@@ -4,25 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Тест</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        .question { font-size: 18px; margin-bottom: 10px; }
-        .options label { display: block; margin: 5px 0; position: relative; }
-        .options label.correct::after {
-            content: "✓";
-            color: green;
-            font-size: 18px;
-            margin-left: 10px;
-        }
-        .options label.incorrect::after {
-            content: "✖";
-            color: red;
-            font-size: 18px;
-            margin-left: 10px;
-        }
-        .button { margin-top: 20px; padding: 10px 20px; font-size: 16px; }
-        .number-input { margin-top: 20px; padding: 10px; font-size: 16px; width: 80px; }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="app">
@@ -41,6 +23,7 @@
         <button class="button" id="switch-test-button">Сменить тест</button>
         <input type="number" class="number-input" id="goto-input" min="1" placeholder="№ вопроса">
         <button class="button" id="goto-button">Перейти</button>
+        <button class="button" id="theme-toggle">Темная тема</button>
     </div>
 
     <script>
@@ -50,6 +33,19 @@
         // Файлы с вопросами (относительные пути)
         const TEST_FILES = ["./PM04.json", "./PM03.json", "./PM05.json"];
         let currentTestFileIndex = 0;
+
+        const themeToggle = document.getElementById("theme-toggle");
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark") {
+            document.body.classList.add("dark-theme");
+            themeToggle.textContent = "Светлая тема";
+        }
+
+        themeToggle.addEventListener("click", () => {
+            const isDark = document.body.classList.toggle("dark-theme");
+            localStorage.setItem("theme", isDark ? "dark" : "light");
+            themeToggle.textContent = isDark ? "Светлая тема" : "Темная тема";
+        });
 
         // Функция для перемешивания массива
         function shuffle(array) {
