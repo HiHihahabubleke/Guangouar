@@ -21,6 +21,7 @@
             margin-left: 10px;
         }
         .button { margin-top: 20px; padding: 10px 20px; font-size: 16px; }
+        .number-input { margin-top: 20px; padding: 10px; font-size: 16px; width: 80px; }
     </style>
 </head>
 <body>
@@ -38,6 +39,8 @@
         </div>
         <button class="button" id="restart-button" style="display:none;">Начать заново</button>
         <button class="button" id="switch-test-button">Сменить тест</button>
+        <input type="number" class="number-input" id="goto-input" min="1" placeholder="№ вопроса">
+        <button class="button" id="goto-button">Перейти</button>
     </div>
 
     <script>
@@ -69,6 +72,7 @@
                 const response = await fetch(url);
                 QUESTIONS = await response.json();
                 QUESTIONS.forEach(q => shuffle(q.options)); // Перемешиваем варианты перед началом
+                document.getElementById("goto-input").setAttribute("max", QUESTIONS.length);
                 showQuestion();
             } catch (err) {
                 console.error('Не удалось загрузить вопросы:', err);
@@ -154,6 +158,26 @@
         document.getElementById("switch-test-button").addEventListener("click", async () => {
             currentTestFileIndex = (currentTestFileIndex + 1) % TEST_FILES.length;
             await restartTest();
+        });
+
+        // Переход к указанному номеру вопроса
+        document.getElementById("goto-button").addEventListener("click", () => {
+            const input = document.getElementById("goto-input");
+            const num = parseInt(input.value, 10);
+            if (isNaN(num)) {
+                alert("Введите номер вопроса");
+                return;
+            }
+            const index = QUESTIONS.findIndex(q => q.number === num);
+            if (index === -1) {
+                alert("Вопрос с таким номером не найден");
+                return;
+            }
+            currentQuestionIndex = index;
+            document.getElementById("result-section").style.display = "none";
+            document.getElementById("question-section").style.display = "block";
+            document.getElementById("restart-button").style.display = "none";
+            showQuestion();
         });
 
         // Сброс теста и начало заново
