@@ -74,6 +74,18 @@ body {
   width: 80px;
 }
 
+.goto-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.goto-container .number-input,
+.goto-container .button {
+  margin-top: 0;
+}
+
 @media (max-width: 480px) {
   body {
     margin: 10px;
