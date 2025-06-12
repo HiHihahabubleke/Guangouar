@@ -36,6 +36,10 @@ body {
   margin: 5px 0;
   position: relative;
 }
+.options input[type="radio"] {
+  transform: scale(1.2);
+  margin-right: 8px;
+}
 .options label.correct::after {
   content: "\2713";
   color: green;
@@ -73,8 +77,23 @@ body {
 @media (max-width: 480px) {
   body {
     margin: 10px;
+    font-size: 18px;
+  }
+  #app {
+    max-width: 100%;
+  }
+  .question {
+    font-size: 20px;
+  }
+  .options label {
+    font-size: 18px;
   }
   .button {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 18px;
+  }
+  .number-input {
     width: 100%;
     box-sizing: border-box;
   }
