@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <script>
+        if (localStorage.getItem('authenticated') !== 'true') {
+            window.location.href = 'login.html';
+        }
+    </script>
     <div id="app">
         <div id="question-section">
             <div class="question" id="question-text"></div>
