@@ -16,9 +16,10 @@ This repository contains a simple quiz page and a small Node.js backend used to 
    The endpoint `/questions?file=PM04.json` will return the JSON file.
 
 The server now serves `login.html` at the root URL. Enter one of the allowed
-four-digit codes to access `index.html` and start the quiz. A successful login
-stores a flag in `localStorage`. If you try to open `index.html` directly
-without being authenticated, the page will redirect back to `login.html`.
+four-digit codes to access `index.html` and start the quiz. The valid codes are
+`1489`, `2288`, `3826`, `5252` and `1230`. A successful login stores a flag in
+`localStorage`. If you try to open `index.html` directly without being
+authenticated, the page will redirect back to `login.html`.
 Use the **Темная тема** button on the page to switch between light and dark
 modes. The chosen theme is saved in `localStorage` and applied on the next
 visit.
