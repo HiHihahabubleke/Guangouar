@@ -14,10 +14,13 @@ app.use(express.static(__dirname));
 
 // Endpoint to return questions JSON
 app.get('/questions', (req, res) => {
+  res.set('Cache-Control', 'no-store'); // 🔧 Отключаем кэш для JSON
+
   const file = req.query.file;
   if (!file) {
     return res.status(400).json({ error: 'Missing file parameter' });
   }
+
   const filePath = path.join(__dirname, file);
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
