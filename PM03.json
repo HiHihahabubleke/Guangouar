@@ -1506,21 +1506,21 @@
             "touch",
             "wc",
             "tty",
-            "echo "
+            "echo"
         ],
-        "correct": "echo "
+        "correct": "echo"
     },
     {
         "number": 127,
         "question": "Far. Режим позволяющий видеть на экране «скрытые файлы»",
         "options": [
-            "Show Hidden Files ",
+            "Show Hidden Files",
             "Full Screen",
             "Show Files",
             "Show Menu Bar",
             "Menu Status"
         ],
-        "correct": "Show Hidden Files "
+        "correct": "Show Hidden Files"
     },
     {
         "number": 128,
