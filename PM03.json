@@ -1514,13 +1514,13 @@
         "number": 127,
         "question": "Far. Режим позволяющий видеть на экране «скрытые файлы»",
         "options": [
-            "Show Hidden Files",
+            "Show Hidden Files ",
             "Full Screen",
             "Show Files",
             "Show Menu Bar",
             "Menu Status"
         ],
-        "correct": "Show Hidden Files"
+        "correct": "Show Hidden Files "
     },
     {
         "number": 128,
@@ -1550,13 +1550,13 @@
         "number": 130,
         "question": "Оперативная память это - ...",
         "options": [
-            "Микросхема на системной плате",
-            "Рабочая область центрального процессора",
-            "Долговременное хранилище информации",
-            "Устройство переноса информации",
-            "Основное хранилище информации"
+            "А",
+            "B",
+            "C",
+            "D",
+            "E"
         ],
-        "correct": "Рабочая область центрального процессора"
+        "correct": "C"
     },
     {
         "number": 131,
