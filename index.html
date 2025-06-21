@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Вход</title>
-    <link rel="stylesheet" href="styles.css">
     <style>
-        /* Center the form on the page */
+        /* Центрирование формы */
         #login-container {
             display: flex;
             flex-direction: column;
@@ -14,23 +13,59 @@
             justify-content: center;
             height: 80vh;
         }
+
+        /* Стиль для текста BAUR.test */
+        .baur-text {
+            font-family: monospace;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Поле ввода и кнопка (оставляем как было) */
+        .number-input {
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            width: 200px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
         #error {
             color: red;
             margin-top: 10px;
+            display: none;
         }
     </style>
 </head>
 <body>
     <div id="login-container">
+        <!-- Добавляем текст BAUR.test -->
+        <div class="baur-text">BAUR.test</div>
+
+        <!-- Всё остальное без изменений -->
         <input type="password" id="code-input" class="number-input" placeholder="Код" maxlength="4" autofocus>
         <button id="login-button" class="button">Войти</button>
-        <div id="error" style="display:none;">Неверный код</div>
+        <div id="error">Неверный код</div>
     </div>
 
     <script>
         const allowedCodes = ["1489", "2288", "3826", "5252", "1230"];
         const input = document.getElementById('code-input');
         const error = document.getElementById('error');
+
         document.getElementById('login-button').addEventListener('click', () => {
             if (allowedCodes.includes(input.value.trim())) {
                 window.location.href = 'quiz.html';
@@ -38,6 +73,7 @@
                 error.style.display = 'block';
             }
         });
+
         input.addEventListener('keyup', (e) => {
             if (e.key === 'Enter') {
                 document.getElementById('login-button').click();
